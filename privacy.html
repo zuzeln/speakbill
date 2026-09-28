@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>随口记 (Speakbill) — 用户隐私政策</title>
+  <style>
+    :root {
+      --bg: #F8F9FA;
+      --card-bg: #FFFFFF;
+      --text: #1D1D1F;
+      --text-sub: #6E6E73;
+      --border: rgba(0, 0, 0, 0.08);
+      --primary: #007AFF;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --card-bg: #1C1C1E;
+        --text: #F5F5F7;
+        --text-sub: #86868B;
+        --border: rgba(255, 255, 255, 0.12);
+      }
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Helvetica Neue", sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      padding: 40px 20px 80px;
+    }
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 36px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .date {
+      font-size: 14px;
+      color: var(--text-sub);
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: var(--text);
+    }
+    p {
+      margin-bottom: 14px;
+      color: var(--text);
+      font-size: 15px;
+    }
+    ul {
+      margin: 0 0 16px 20px;
+      font-size: 15px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    code {
+      background: rgba(0, 122, 255, 0.08);
+      color: var(--primary);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>随口记 (Speakbill) 用户隐私政策</h1>
+    <div class="date">更新日期：2026年9月22日 · 生效日期：2026年9月22日</div>
+
+    <p>随口记（Speakbill，以下简称“我们”或“本应用”）深知个人隐私对您的重要性，并始终致力于保护您的个人信息安全。本隐私政策适用于您通过苹果 App Store 下载并使用的随口记 iOS 移动应用程序。</p>
+
+    <h2>一、权限调用与数据收集原则</h2>
+    <p>我们遵循极简与最小必要原则，仅在您主动触发相应功能时申请系统权限：</p>
+    <ul>
+      <li><strong>麦克风权限（NSMicrophoneUsageDescription）</strong>：仅在您主动按住主界面语音悬浮按钮进行口述记账时调用。音频数据直接在设备本地实时进行语音转写，我们不会在任何远端服务器上留存或录制您的原始语音音频。</li>
+      <li><strong>语音识别权限（NSSpeechRecognitionUsageDescription）</strong>：用于调用苹果 iOS 系统原生的高精度端侧语音识别引擎，将您的口述转换成结构化记账文本。</li>
+      <li><strong>面容 ID / 触控 ID（NSFaceIDUsageDescription）</strong>：仅在您开启“生物识别解锁”隐私防窥功能后，调用苹果系统安全隔离区（Secure Enclave）验证身份。应用本身不接触、不收集、不存储您的任何面容或指纹生物数据。</li>
+      <li><strong>相册访问权限</strong>：仅在您主动使用“AI 识图记账”从相册挑选发票、小票或支付账单截图时调用，应用仅读取您单次主动选中的图片。</li>
+      <li><strong>相机权限</strong>：仅在您点击“拍摄纸质小票”时调用，用于即时取景拍摄发票小票，拍摄后图片在端侧进行文字提取。</li>
+    </ul>
+
+    <h2>二、财务数据的本地存储与 iCloud 私有同步</h2>
+    <ul>
+      <li><strong>纯本地存储优先</strong>：您的核心记账明细、账户余额、资产卡片和多账本数据全部保存在您设备的本地沙盒数据库中。</li>
+      <li><strong>私有云同步安全</strong>：若开启同步，数据仅通过您个人 Apple ID 绑定的苹果官方私有云存储（iCloud CloudKit）进行端到端加密传输与存储，开发者不设立独立用户数据库，无法查看、归集或转售您的任何账单数据。</li>
+      <li><strong>数据导出自主权</strong>：本应用支持将账单导出为 CSV 标准表格文件。导出文件由 iOS 系统原生分享面板直接送达您指定的位置（如本地文件或隔空投送），不经由任何第三方中间服务器。</li>
+    </ul>
+
+    <h2>三、AI 智能解析服务特别说明</h2>
+    <p>当您使用 AI 口述拆单或截图识图功能时，转写文本或小票图片会通过行业标准高强度加密传输协议（HTTPS）发送至大模型解析服务以提取商户、金额及分类。传输过程中不附加任何能识别您真实个人身份的信息，解析完成后即时丢弃，绝不用于模型重新训练或商业画像。</p>
+
+    <h2>四、未成年人保护</h2>
+    <p>本应用主要面向具备完全民事行为能力的成年人。若您为未成年人，请在法定监护人的陪同与指导下阅读并使用本应用。</p>
+
+    <h2>五、联系我们与权利行使</h2>
+    <p>您对您的个人数据拥有绝对的控制权，可随时在应用内清空、修改或导出全部数据。如对本隐私政策有任何疑问、意见或申诉，请通过官方支持邮箱联系我们：</p>
+    <p><strong>支持与隐私联络邮箱</strong>：<code>support@billapp.cn</code></p>
+
+    <footer>
+      <p>© 2026 随口记 (Speakbill) 独立开发团队 · 保留所有权利</p>
+    </footer>
+  </div>
+</body>
+</html>
