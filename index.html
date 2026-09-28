@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>随口记 (Speakbill) — 随口一说，AI 自动分析记账</title>
   <meta name="description" content="随口记 (Speakbill) 是一款专为年轻人打造的极速 iOS 原生记账 App。支持一句话口述自动拆解多笔、AI 截图智能查重、iCloud 私有云同步与纯本地端到端隐私保护。">
+  <script>
+    // 在浏览器开始解析排版与 DOM 前，立即锁定滚动位置，杜绝 Chromium 与微信内核自动滚到底部
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
   <style>
     :root {
       --primary: #007AFF;
@@ -362,7 +369,7 @@
       display: flex;
       width: 100%;
       overflow-x: auto;
-      scroll-snap-type: x mandatory;
+      scroll-snap-type: x proximity;
       -webkit-overflow-scrolling: touch;
       scroll-behavior: smooth;
       gap: 0; /* 0 gap 保证每一帧严格对准手机中心 */
@@ -691,8 +698,8 @@
       <div class="nav-links">
         <a href="#showcase">界面预览</a>
         <a href="#features">功能亮点</a>
-        <a href="#privacy">隐私政策</a>
-        <a href="#support">技术支持</a>
+        <a href="privacy.html">隐私政策</a>
+        <a href="support.html">技术支持</a>
       </div>
     </div>
   </header>
@@ -975,8 +982,8 @@
     <div class="footer-links">
       <a href="#showcase">界面预览</a>
       <a href="#features">功能介绍</a>
-      <a href="#privacy">隐私政策</a>
-      <a href="#support">用户支持</a>
+      <a href="privacy.html">隐私政策</a>
+      <a href="support.html">用户支持</a>
     </div>
     <p style="margin-bottom: 8px;">© 2026 Speakbill Team. 保留所有权利。</p>
   </footer>
@@ -984,12 +991,26 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // 强制页面每次加载/刷新均置顶在首屏最上方（杜绝自动滚到最底部）
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
+    // 强制在页面各生命周期（初次解析、BFCache 恢复、资源加载完毕、异步渲染）均置顶在最上方
+    function forceScrollToTop() {
+      const hash = window.location.hash;
+      // 只有用户主动点击包含具体业务模块锚点（如 #showcase）时才允许，其余无 hash 或历史 hash 一律坚决置顶归零
+      if (!hash || hash === '#' || hash === '#privacy' || hash === '#support') {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+      }
     }
-    window.scrollTo(0, 0);
-    window.addEventListener('load', () => { window.scrollTo(0, 0); });
+
+    forceScrollToTop();
+    window.addEventListener('DOMContentLoaded', forceScrollToTop);
+    window.addEventListener('pageshow', forceScrollToTop);
+    window.addEventListener('load', () => {
+      forceScrollToTop();
+      setTimeout(forceScrollToTop, 50);
+      setTimeout(forceScrollToTop, 150);
+      setTimeout(forceScrollToTop, 300);
+    });
 
     // 走马灯轮播逻辑
     const viewport = document.getElementById('carouselViewport');
